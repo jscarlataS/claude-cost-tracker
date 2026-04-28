@@ -216,8 +216,8 @@ function MessageTable({ messages, convertCurrency, currencySymbol, show5mCache, 
           const isUser = msg.role === 'user'
           const isExpensive = !isUser && costThreshold != null && convertCurrency(msg.costUSD) > costThreshold
           const isExpanded = expandedMessages.has(msg.uuid)
-          const hasFullText = (msg.fullText && msg.fullText.length > msg.preview.length) ||
-            msg.toolResults.some(tr => tr.fullResult && tr.fullResult.length > 80)
+          const hasFullText = (msg.fullText && msg.fullText.length > 0) ||
+            msg.toolResults.some(tr => tr.fullResult && tr.fullResult.length > 0)
           return (
             <tr
               key={msg.uuid || `msg-${idx}`}
